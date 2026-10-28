@@ -1,0 +1,77 @@
+{
+  "focus": "Сытость лечит и успокаивает",
+  "price": "Голод приходит быстрее",
+  "root": {
+    "name": "Желудок",
+    "text": "Сытый, он спокоен и быстро затягивает раны. Голодный — не человек.",
+    "effects": [
+      {"stat": "heal.power", "value": 0.25, "when": ["food>0.8"]},
+      {"stat": "pulse.fear", "value": -0.15, "when": ["food>0.8"]},
+      {"stat": "food.exhaustion", "value": 0.15}
+    ]
+  },
+  "branches": [
+    [
+      {"name": "Запас", "text": "Сытый дольше бежит.",
+        "effects": [{"stat": "stamina.max", "value": 0.10, "when": ["food>0.7"]}]},
+      {"name": "Тёплый живот", "text": "Еда греет изнутри.",
+        "effects": [{"stat": "cold.resist", "value": 2, "when": ["food>0.7"]}]},
+      {"name": "Тяжёлая поступь", "text": "Его не сдвинуть и не уронить.",
+        "effects": [
+          {"stat": "knockback.resist", "value": 0.20},
+          {"stat": "damage.fall", "value": -0.20}
+        ]},
+      {"name": "Сытое тело", "text": "Набитый живот — крепкое тело.",
+        "effects": [
+          {"stat": "hp.max", "value": 0.15, "when": ["food>0.9"]},
+          {"stat": "stamina.regen", "value": 0.15, "when": ["food>0.9"]}
+        ]}
+    ],
+    [
+      {"name": "Всё впрок", "text": "Из еды он берёт больше.",
+        "effects": [{"stat": "food.restore", "value": 0.20}]},
+      {"name": "Заесть страх", "text": "Жуёт — и сердце успокаивается.",
+        "effects": [{"stat": "pulse.shift", "value": -15, "after": "eat", "cooldown": 20}]},
+      {"name": "Крепкий желудок", "text": "Улей выворачивает его реже.",
+        "effects": [
+          {"stat": "coth.vomit", "value": 0.50},
+          {"stat": "coth.resist", "value": 0.15}
+        ]},
+      {"name": "Тяжёлая сытость", "text": "Набитое тело чинит себя само и меньше ломается.",
+        "effects": [
+          {"stat": "heal.power", "value": 0.50, "when": ["food>0.9"]},
+          {"stat": "body.resist", "value": -0.10}
+        ]}
+    ],
+    [
+      {"name": "Сила из котла", "text": "Сытый бьёт сильнее.",
+        "effects": [{"stat": "melee.damage", "value": 0.08, "when": ["food>0.8"]}]},
+      {"name": "Не на голодный желудок", "text": "Поел — руки уверенней.",
+        "effects": [{"stat": "gun.reload", "value": 0.10, "after": "eat", "for": 60}]},
+      {"name": "Жилы", "text": "Сытые руки быстрые и аккуратные.",
+        "effects": [
+          {"stat": "attack.speed", "value": 0.06},
+          {"stat": "wear.weapon", "value": -0.10}
+        ]},
+      {"name": "Пир", "text": "Убийство вблизи кормит его.",
+        "effects": [{"stat": "heal", "value": 0.05, "after": "kill_melee", "when": ["food>0.7"], "cooldown": 3}]}
+    ]
+  ],
+  "cards": [
+    {"id": "gl_strong", "name": "Сытый — сильный", "text": "Сила из живота. Живот просит ещё.",
+      "buff": [{"stat": "melee.damage", "value": 0.10, "when": ["food>0.8"]}],
+      "cost": [{"stat": "food.exhaustion", "value": 0.12}]},
+    {"id": "gl_all_in", "name": "Всё в рот", "text": "Еда идёт впрок. Таблетки — хуже.",
+      "buff": [{"stat": "food.restore", "value": 0.25}],
+      "cost": [{"stat": "effect.stim", "value": -0.10}]},
+    {"id": "gl_fat", "name": "Запас жира", "text": "Сытое тело крепче, но тяжелее.",
+      "buff": [{"stat": "hp.max", "value": 0.12, "when": ["food>0.8"]}],
+      "cost": [{"stat": "stamina.regen", "value": -0.10, "when": ["food>0.95"]}]},
+    {"id": "gl_iron_gut", "name": "Железный живот", "text": "Желудок держит, лекарства — хуже.",
+      "buff": [{"stat": "coth.vomit", "value": 0.40}],
+      "cost": [{"stat": "effect.antibiotic", "value": -0.15}]},
+    {"id": "gl_comfort", "name": "Утешение", "text": "После еды тихо. И немного лениво.",
+      "buff": [{"stat": "pulse.rest", "value": -8, "after": "eat", "for": 60}],
+      "cost": [{"stat": "move.speed", "value": -0.03}]}
+  ]
+}

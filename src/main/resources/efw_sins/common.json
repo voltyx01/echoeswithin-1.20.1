@@ -1,0 +1,106 @@
+{
+  "settings": {
+    "maxPages": 20,
+    "pointPages": [1, 3, 5, 7, 9, 11, 13, 15, 17, 18, 19, 20],
+    "gracePages": [5, 10, 15, 20],
+    "maxRank": 3,
+    "rankBuff": [1.0, 1.6, 2.2],
+    "rankCost": [1.0, 1.4, 1.8],
+    "sinCardsOffered": 2
+  },
+  "cards": [
+    {
+      "id": "c_bones",
+      "name": "Крепкие кости",
+      "text": "Тело привыкает носить себя через всё это.",
+      "buff": [{"stat": "hp.max", "value": 0.10}],
+      "cost": [{"stat": "move.speed", "value": -0.04}]
+    },
+    {
+      "id": "c_pain_habit",
+      "name": "Привычка к боли",
+      "text": "Сердце уже не вздрагивает от каждой раны.",
+      "buff": [{"stat": "pulse.hurt", "value": -0.30}, {"stat": "damage.fall", "value": -0.20}],
+      "cost": [{"stat": "heal.power", "value": -0.10}]
+    },
+    {
+      "id": "c_light_step",
+      "name": "Лёгкий шаг",
+      "text": "Пятка, носок. Как учили когда-то.",
+      "buff": [{"stat": "visibility", "value": -0.12}],
+      "cost": [{"stat": "stamina.sprint_cost", "value": 0.10}]
+    },
+    {
+      "id": "c_cold_math",
+      "name": "Сухой расчёт",
+      "text": "Руки помнят, сколько осталось в магазине.",
+      "buff": [{"stat": "gun.reload", "value": 0.08}],
+      "cost": [{"stat": "pulse.rest", "value": 4}]
+    },
+    {
+      "id": "c_tempered",
+      "name": "Закалка",
+      "text": "Холод и жара перестают быть новостью.",
+      "buff": [{"stat": "heat.resist", "value": 1.5}, {"stat": "cold.resist", "value": 1.5}],
+      "cost": [{"stat": "food.exhaustion", "value": 0.08}]
+    },
+    {
+      "id": "c_no_sleep",
+      "name": "Не спать",
+      "text": "Глаза закрываются сами. Ты не даёшь.",
+      "buff": [{"stat": "stamina.max", "value": 0.12}],
+      "cost": [{"stat": "pulse.rest", "value": 6}]
+    },
+    {
+      "id": "c_roll_habit",
+      "name": "Падать правильно",
+      "text": "Плечо, спина, на ноги. Сотый раз.",
+      "buff": [{"stat": "roll.cost", "value": -0.15}],
+      "cost": [{"stat": "roll.cooldown", "value": 0.10}]
+    },
+    {
+      "id": "c_thick_skin",
+      "name": "Толстая кожа",
+      "text": "Под курткой — ещё одна, из шрамов.",
+      "buff": [{"stat": "armor", "value": 2}],
+      "cost": [{"stat": "move.speed", "value": -0.03}]
+    },
+    {
+      "id": "c_dry_mouth",
+      "name": "Сухой рот",
+      "text": "Еда больше не вкусная. Просто нужная.",
+      "buff": [{"stat": "food.exhaustion", "value": -0.10}],
+      "cost": [{"stat": "food.restore", "value": -0.10}]
+    }
+  ],
+  "grace": [
+    {
+      "id": "g_breath",
+      "name": "Вдох",
+      "text": "Впервые за долгое время — полной грудью.",
+      "buff": [{"stat": "stamina.regen", "value": 0.15}],
+      "cost": []
+    },
+    {
+      "id": "g_skin",
+      "name": "Новая кожа",
+      "text": "Шрамы затягиваются. Под ними всё то же.",
+      "buff": [{"stat": "hp.max", "value": 0.08}],
+      "cost": []
+    },
+    {
+      "id": "g_hands",
+      "name": "Бережные руки",
+      "text": "Ты научился беречь вещи. Хоть что-то.",
+      "buff": [{"stat": "wear.weapon", "value": -0.15}, {"stat": "wear.tool", "value": -0.15}],
+      "cost": []
+    },
+    {
+      "id": "g_quiet",
+      "name": "Тихое сердце",
+      "text": "Иногда оно просто бьётся.",
+      "buff": [{"stat": "pulse.rest", "value": -5}, {"stat": "pulse.decay", "value": 0.15}],
+      "cost": []
+    }
+  ]
+}

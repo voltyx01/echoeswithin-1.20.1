@@ -1,0 +1,68 @@
+{
+  "focus": "Точность, пока вас не задели",
+  "price": "Ранение сбивает руку",
+  "root": {
+    "name": "Безупречность",
+    "text": "Пока на нём ни царапины, рука не дрожит. Первая кровь всё портит.",
+    "effects": [
+      {"stat": "gun.spread", "value": -0.15, "when": ["hp>0.7"]},
+      {"stat": "gun.recoil", "value": -0.10, "when": ["hp>0.7"]},
+      {"stat": "gun.spread", "value": 0.10, "after": "hurt", "for": 10}
+    ]
+  },
+  "branches": [
+    [
+      {"name": "Осанка", "text": "Целым он дышит ровнее.",
+        "effects": [{"stat": "stamina.regen", "value": 0.20, "when": ["hp>0.7"]}]},
+      {"name": "Ровный шаг", "text": "В прицеле идёт, а не крадётся.",
+        "effects": [{"stat": "move.speed", "value": 0.08, "when": ["aim"]}]},
+      {"name": "Не склонюсь", "text": "Его трудно сбить с ног.",
+        "effects": [{"stat": "knockback.resist", "value": 0.30}]},
+      {"name": "Ни царапины", "text": "Минута без ран — и он лёгок, как в начале.",
+        "effects": [
+          {"stat": "move.speed", "value": 0.10, "when": ["nohurt:60"]},
+          {"stat": "stamina.max", "value": 0.15, "when": ["nohurt:60"]}
+        ]}
+    ],
+    [
+      {"name": "Сам", "text": "Чужая помощь не нужна. Свои бинты лечат лучше.",
+        "effects": [{"stat": "heal.power", "value": 0.15}]},
+      {"name": "Холодная голова", "text": "Пока сердце спокойно, страх не доходит.",
+        "effects": [{"stat": "pulse.fear", "value": -0.25, "when": ["pulse<100"]}]},
+      {"name": "Я не болен", "text": "Он отказывается признать Улей.",
+        "effects": [{"stat": "coth.resist", "value": 0.25}]},
+      {"name": "Чистая кровь", "text": "Тело держит заразу на расстоянии.",
+        "effects": [
+          {"stat": "effect.antibiotic", "value": 0.50},
+          {"stat": "coth.vomit", "value": 0.50}
+        ]}
+    ],
+    [
+      {"name": "Выверенный хват", "text": "Ствол слушается.",
+        "effects": [{"stat": "gun.recoil", "value": -0.08}]},
+      {"name": "Идеальный выстрел", "text": "Замер, прицел, выдох.",
+        "effects": [{"stat": "headshot.damage", "value": 0.25, "when": ["aim", "still:1"]}]},
+      {"name": "Показательная", "text": "Попадание в голову — и руки сами меняют магазин.",
+        "effects": [{"stat": "gun.reload", "value": 0.25, "after": "headshot", "for": 5}]},
+      {"name": "Безупречный", "text": "Минута без ран — и каждая пуля весит больше.",
+        "effects": [{"stat": "gun.damage", "value": 0.15, "when": ["nohurt:60"]}]}
+    ]
+  ],
+  "cards": [
+    {"id": "p_straight_back", "name": "Прямая спина", "text": "Голову держать высоко. И целить в голову.",
+      "buff": [{"stat": "headshot.damage", "value": 0.12}],
+      "cost": [{"stat": "heal.power", "value": -0.10}]},
+    {"id": "p_no_weakness", "name": "Не показать слабость", "text": "Пока стоит — стоит. Упадёт — сердце не выдержит.",
+      "buff": [{"stat": "hp.max", "value": 0.10}],
+      "cost": [{"stat": "pulse.rest", "value": 20, "when": ["hp<0.3"]}]},
+    {"id": "p_style", "name": "Безупречный стиль", "text": "Только в прицел. От бедра — не его.",
+      "buff": [{"stat": "gun.spread", "value": -0.12, "when": ["aim"]}],
+      "cost": [{"stat": "gun.spread", "value": 0.12, "when": ["!aim"]}]},
+    {"id": "p_above", "name": "Выше этого", "text": "Твари не стоят его страха. Люди рядом раздражают.",
+      "buff": [{"stat": "pulse.fear", "value": -0.20}],
+      "cost": [{"stat": "pulse.rest", "value": 6, "when": ["ally:8"]}]},
+    {"id": "p_know_better", "name": "Знаю лучше", "text": "Замки он вскрывает сам. Инструменты — тоже по-своему.",
+      "buff": [{"stat": "lockpick.wear", "value": -0.20}],
+      "cost": [{"stat": "wear.tool", "value": 0.10}]}
+  ]
+}

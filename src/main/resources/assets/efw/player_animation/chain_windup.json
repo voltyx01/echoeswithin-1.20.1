@@ -1,0 +1,47 @@
+{
+ "name": "chain_windup",
+ "author": "efw",
+ "description": "chain hook",
+ "emote": {
+  "isLoop": "true",
+  "returnTick": 1,
+  "beginTick": 0,
+  "endTick": 12,
+  "stopTick": 12,
+  "degrees": false,
+  "moves": [
+   {
+    "tick": 0,
+    "easing": "INOUTSINE",
+    "turn": 0,
+    "leftArm": {
+     "pitch": -2.75
+    }
+   },
+   {
+    "tick": 0,
+    "easing": "INOUTSINE",
+    "turn": 0,
+    "leftArm": {
+     "yaw": 0.0
+    }
+   },
+   {
+    "tick": 12,
+    "easing": "INOUTSINE",
+    "turn": 0,
+    "leftArm": {
+     "pitch": -2.75
+    }
+   },
+   {
+    "tick": 12,
+    "easing": "INOUTSINE",
+    "turn": 0,
+    "leftArm": {
+     "yaw": 0.0
+    }
+   }
+  ]
+ }
+}

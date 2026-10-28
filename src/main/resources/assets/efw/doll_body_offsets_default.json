@@ -1,0 +1,155 @@
+{
+  "NONE": {
+    "posX": -0.20000002,
+    "posY": 0.0,
+    "posZ": 0.0,
+    "rotX": 4.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  },
+  "BACKPACK": {
+    "posX": -0.9,
+    "posY": -4.2000003,
+    "posZ": 2.4999998,
+    "rotX": 3.0,
+    "rotY": -24.0,
+    "rotZ": 9.0,
+    "scale": 1.0
+  },
+  "ROCKIE": {
+    "posX": 0.0,
+    "posY": -4.8999977,
+    "posZ": 2.8999994,
+    "rotX": -2.0,
+    "rotY": -2.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  },
+  "RECLUIT": {
+    "posX": 0.0,
+    "posY": -5.999999,
+    "posZ": 3.399999,
+    "rotX": 7.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  },
+  "JUGGERNAUT": {
+    "posX": 0.0,
+    "posY": -4.6,
+    "posZ": 2.5999997,
+    "rotX": 0.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  },
+  "EXO": {
+    "posX": 0.0,
+    "posY": 0.0,
+    "posZ": 0.0,
+    "rotX": 0.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  },
+  "EXO_HEAVY": {
+    "posX": 0.6,
+    "posY": -5.0,
+    "posZ": 4.7,
+    "rotX": 8.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  },
+  "HAZMAT": {
+    "posX": -0.8000001,
+    "posY": -2.6999993,
+    "posZ": 3.1999993,
+    "rotX": 9.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  },
+  "MILITARY": {
+    "posX": -0.3,
+    "posY": 0.0,
+    "posZ": 1.2000002,
+    "rotX": 0.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  },
+  "POLICE": {
+    "posX": -0.3,
+    "posY": 0.0,
+    "posZ": 0.0,
+    "rotX": 0.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  },
+  "FIRE_FIGHTER": {
+    "posX": -0.8000001,
+    "posY": -2.9999995,
+    "posZ": 1.0000001,
+    "rotX": 8.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  },
+  "GUILLIE": {
+    "posX": 0.0,
+    "posY": 0.0,
+    "posZ": 0.0,
+    "rotX": 0.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  },
+  "PLATE_CARRIER": {
+    "posX": 0.0,
+    "posY": 0.0,
+    "posZ": 0.2,
+    "rotX": 0.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  },
+  "SWAT": {
+    "posX": 0.0,
+    "posY": 0.0,
+    "posZ": 1.0000001,
+    "rotX": 2.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  },
+  "RIOT": {
+    "posX": 0.0,
+    "posY": 0.0,
+    "posZ": 0.0,
+    "rotX": 0.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  },
+  "STEEL": {
+    "posX": 0.0,
+    "posY": 0.0,
+    "posZ": 0.0,
+    "rotX": 0.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  },
+  "TITANIUM": {
+    "posX": 0.0,
+    "posY": 0.0,
+    "posZ": 0.0,
+    "rotX": 0.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "scale": 1.0
+  }
+}

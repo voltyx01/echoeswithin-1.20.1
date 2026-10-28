@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "efw:block/antenna"
+    },
+    "facing=south": {
+      "model": "efw:block/antenna"
+    },
+    "facing=west": {
+      "model": "efw:block/antenna"
+    },
+    "facing=east": {
+      "model": "efw:block/antenna"
+    }
+  }
+}

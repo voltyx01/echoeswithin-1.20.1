@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "efw:block/old_radio"
+    },
+    "facing=south": {
+      "model": "efw:block/old_radio"
+    },
+    "facing=west": {
+      "model": "efw:block/old_radio"
+    },
+    "facing=east": {
+      "model": "efw:block/old_radio"
+    }
+  }
+}

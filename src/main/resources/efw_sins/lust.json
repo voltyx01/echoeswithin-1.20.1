@@ -1,0 +1,333 @@
+{
+  "focus": "Высокий пульс даёт силы, стимуляторы",
+  "price": "Спокойствие выматывает",
+  "root": {
+    "name": "Пульс — топливо",
+    "text": "Он живёт, только когда сердце колотится. В тишине — пусто.",
+    "effects": [
+      {
+        "stat": "move.speed",
+        "value": 0.06,
+        "when": [
+          "pulse>110"
+        ]
+      },
+      {
+        "stat": "gun.reload",
+        "value": 0.08,
+        "when": [
+          "pulse>110"
+        ]
+      },
+      {
+        "stat": "stamina.regen",
+        "value": -0.1,
+        "when": [
+          "pulse<80"
+        ]
+      }
+    ]
+  },
+  "branches": [
+    [
+      {
+        "name": "Дрожь в ногах",
+        "text": "Быстрое сердце — быстрое дыхание.",
+        "effects": [
+          {
+            "stat": "stamina.regen",
+            "value": 0.2,
+            "when": [
+              "pulse>100"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Вторая кожа",
+        "text": "Холод и жар — тоже ощущения.",
+        "effects": [
+          {
+            "stat": "heat.resist",
+            "value": 2
+          },
+          {
+            "stat": "cold.resist",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "name": "Лёгкое тело",
+        "text": "На пике пульса кувырок ничего не стоит и уводит из-под удара.",
+        "effects": [
+          {
+            "stat": "roll.cost",
+            "value": -0.3,
+            "when": [
+              "pulse>120"
+            ]
+          },
+          {
+            "stat": "roll.guard",
+            "value": 6,
+            "when": [
+              "pulse>120"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "На пике",
+        "text": "Сердце в горле — и тело летит.",
+        "effects": [
+          {
+            "stat": "move.speed",
+            "value": 0.12,
+            "when": [
+              "pulse>140"
+            ]
+          },
+          {
+            "stat": "roll.cooldown",
+            "value": -0.4,
+            "when": [
+              "pulse>140"
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "name": "Дозировка",
+        "text": "Он знает, сколько себе можно. И берёт чуть больше.",
+        "effects": [
+          {
+            "stat": "effect.stim",
+            "value": 0.25
+          }
+        ]
+      },
+      {
+        "name": "Держу при себе",
+        "text": "Кукла рядом — страх тише.",
+        "effects": [
+          {
+            "stat": "pulse.fear",
+            "value": -0.3,
+            "when": [
+              "doll"
+            ]
+          }
+        ],
+        "veil": "Что-то рядом — и страх тише. Вы пока не знаете, что."
+      },
+      {
+        "name": "Пережить",
+        "text": "После раны адреналин латает быстрее.",
+        "effects": [
+          {
+            "stat": "heal.power",
+            "value": 0.5,
+            "after": "hurt",
+            "for": 8
+          }
+        ]
+      },
+      {
+        "name": "Жажда",
+        "text": "Кукла просыпается раньше и держит дольше.",
+        "effects": [
+          {
+            "stat": "doll.ready",
+            "value": -15
+          },
+          {
+            "stat": "doll.buff_time",
+            "value": 0.3
+          }
+        ],
+        "veil": "Чего-то не хватает. Вы ещё не знаете чего."
+      }
+    ],
+    [
+      {
+        "name": "Дрожь азарта",
+        "text": "Руки на взводе.",
+        "effects": [
+          {
+            "stat": "gun.reload",
+            "value": 0.1,
+            "when": [
+              "pulse>110"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Сорвать куш",
+        "text": "Убийство на бешеном пульсе — второе дыхание.",
+        "effects": [
+          {
+            "stat": "stamina.restore",
+            "value": 0.3,
+            "after": "kill",
+            "when": [
+              "pulse>120"
+            ],
+            "cooldown": 5
+          }
+        ]
+      },
+      {
+        "name": "Горячие руки",
+        "text": "На пульсе руки быстрее.",
+        "effects": [
+          {
+            "stat": "attack.speed",
+            "value": 0.1,
+            "when": [
+              "pulse>110"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Захлёб",
+        "text": "Чем громче сердце, тем страшнее удар.",
+        "effects": [
+          {
+            "stat": "melee.damage",
+            "value": 0.25,
+            "when": [
+              "pulse>130"
+            ]
+          },
+          {
+            "stat": "gun.damage",
+            "value": 0.12,
+            "when": [
+              "pulse>130"
+            ]
+          }
+        ]
+      }
+    ]
+  ],
+  "cards": [
+    {
+      "id": "l_sensation",
+      "name": "Жажда ощущений",
+      "text": "Укол держит дольше. Отпускает тяжелее.",
+      "buff": [
+        {
+          "stat": "effect.stim",
+          "value": 0.25
+        }
+      ],
+      "cost": [
+        {
+          "stat": "pulse.decay",
+          "value": -0.2
+        }
+      ]
+    },
+    {
+      "id": "l_dulled",
+      "name": "Притупленная боль",
+      "text": "Боль доходит не сразу. Лечение — тоже.",
+      "buff": [
+        {
+          "stat": "pulse.hurt",
+          "value": -0.3
+        },
+        {
+          "stat": "damage.taken",
+          "value": -0.04
+        }
+      ],
+      "cost": [
+        {
+          "stat": "heal.power",
+          "value": -0.1
+        }
+      ]
+    },
+    {
+      "id": "l_attachment",
+      "name": "Привязанность",
+      "text": "С ней спокойно. Без неё — нет.",
+      "buff": [
+        {
+          "stat": "pulse.rest",
+          "value": -8,
+          "when": [
+            "doll"
+          ]
+        }
+      ],
+      "cost": [
+        {
+          "stat": "pulse.rest",
+          "value": 8,
+          "when": [
+            "!doll"
+          ]
+        }
+      ],
+      "veil": "С ней спокойно. С кем — не вспомнить."
+    },
+    {
+      "id": "l_tremor",
+      "name": "Дрожь",
+      "text": "Быстрое сердце — сильный удар. Спокойное — тяжёлые ноги.",
+      "buff": [
+        {
+          "stat": "melee.damage",
+          "value": 0.1,
+          "when": [
+            "pulse>110"
+          ]
+        },
+        {
+          "stat": "gun.damage",
+          "value": 0.06,
+          "when": [
+            "pulse>110"
+          ]
+        }
+      ],
+      "cost": [
+        {
+          "stat": "move.speed",
+          "value": -0.05,
+          "when": [
+            "pulse<80"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "l_skin",
+      "name": "Кожей",
+      "text": "Чувствует всё. Тело горит.",
+      "buff": [
+        {
+          "stat": "heat.resist",
+          "value": 2
+        },
+        {
+          "stat": "cold.resist",
+          "value": 2
+        }
+      ],
+      "cost": [
+        {
+          "stat": "food.exhaustion",
+          "value": 0.1
+        }
+      ]
+    }
+  ]
+}

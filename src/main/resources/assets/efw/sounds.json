@@ -1,0 +1,140 @@
+{
+  "dash": {
+    "category": "player",
+    "sounds": [
+      "efw:dash"
+    ]
+  },
+  "skill.upgrade": {
+    "category": "master",
+    "sounds": [
+      "efw:upgrade"
+    ]
+  },
+  "menu.swoosh": {
+    "category": "master",
+    "sounds": [
+      "efw:menuswoosh"
+    ]
+  },
+  "menu.swooshinvert": {
+    "category": "master",
+    "sounds": [
+      "efw:menuswooshinvert"
+    ]
+  },
+  "flowermenu": {
+    "category": "master",
+    "sounds": [
+      "efw:flowermenu"
+    ]
+  },
+  "flowermenuenter": {
+    "category": "master",
+    "sounds": [
+      "efw:flowermenuenter"
+    ]
+  },
+  "flowermenu0": {
+    "category": "master",
+    "sounds": [
+      "efw:flowermenu0"
+    ]
+  },
+  "notes": {
+    "category": "master",
+    "sounds": [
+      "efw:notes"
+    ]
+  },
+  "itemsound": {
+    "category": "master",
+    "sounds": [
+      "efw:itemsound"
+    ]
+  },
+  "diaryopen": {
+    "category": "master",
+    "sounds": [
+      "efw:diaryopen"
+    ]
+  },
+  "loot.lootprog": {
+    "category": "block",
+    "sounds": [
+      "efw:loot/lootprog1",
+      "efw:loot/lootprog2",
+      "efw:loot/lootprog3",
+      "efw:loot/lootprog4",
+      "efw:loot/lootprog5",
+      "efw:loot/lootprog6",
+      "efw:loot/lootprog7"
+    ]
+  },
+  "gender_female_hurt": {
+    "category": "player",
+    "subtitle": "wildfire_gender.hurt.female",
+    "sounds": [
+      "efw:gender/female_damage",
+      "efw:gender/female_damage2"
+    ]
+  },
+  "heartbeat.out": {
+    "category": "player",
+    "sounds": [
+      "efw:heartbeat/heartbeatout"
+    ]
+  },
+  "heartbeat.in": {
+    "category": "player",
+    "sounds": [
+      "efw:heartbeat/heartbeatin"
+    ]
+  },
+  "speech.letter": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "efw:speech/lettersound",
+        "volume": 2.5
+      }
+    ]
+  },
+  "doll.up": {
+    "category": "player",
+    "sounds": [
+      "efw:doll/doll_up"
+    ]
+  },
+  "doll.down": {
+    "category": "player",
+    "sounds": [
+      "efw:doll/doll_down"
+    ]
+  },
+  "doll.activate": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "efw:doll/doll_activate",
+        "volume": 4.0
+      }
+    ]
+  },
+  "nvg.toggle": {
+    "category": "player",
+    "sounds": [
+      "efw:nvg_on",
+      "efw:nvg_off"
+    ]
+  },
+  "respawn": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "efw:respawn",
+        "stream": true
+      }
+    ]
+  }
+}

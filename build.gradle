@@ -1,0 +1,138 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '[6.0,6.2)', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'eclipse'
+
+version = project.mod_version
+group = project.mod_group_id
+archivesBaseName = project.mod_id
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+println "Java: ${System.getProperty('java.version')}, JVM: ${System.getProperty('java.vm.version')} (${System.getProperty('java.vendor')}), Arch: ${System.getProperty('os.arch')}"
+
+minecraft {
+    mappings channel: project.mapping_channel, version: project.mapping_version
+
+    copyIdeResources = true
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+
+            // Mixin debug arguments
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${project.projectDir}/build/createSrgToMcp/output.srg"
+
+            mods {
+                efw {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                efw {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+mixin {
+    add sourceSets.main, 'efw.refmap.json'
+    config 'efw.mixins.json'
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
+
+    // Mixin annotation processor
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+    // TACZ dependency from libs folder
+    compileOnly fg.deobf('com.tacz:tacz-1.20.1:1.1.8-hotfix2')
+    runtimeOnly fg.deobf('com.tacz:tacz-1.20.1:1.1.8-hotfix2')
+
+    // GeckoLib: the Tagilla mask (a geo armor piece)
+    compileOnly fg.deobf('software.bernie.geckolib:geckolib-forge-1.20.1:4.8.4')
+
+    // Player Animator (roll animation) and Shoulder Surfing (camera aware roll direction / lock-on)
+    compileOnly fg.deobf('dev.kosmx:player-animation-lib-forge:1.0.2-rc1+1.20')
+    // runtimeOnly of these two breaks the dev run (mixin config lookup); for a dev run copy the deobf jars from the gradle cache into run/mods
+    compileOnly fg.deobf('com.github.exopandora:ShoulderSurfing-Forge:1.20.1-5.2.0')
+    // Locks Reforged: the lock tooltip, the loupe over locked containers, the removed lock tiers
+    compileOnly fg.deobf('melonslise:locks_reforged:1.7.5')
+    // Sodium Dynamic Lights: burning entities give only a dim light
+    compileOnly fg.deobf('toni:sodiumdynamiclights-forge:1.0.10-1.20.1')
+    // Lost Cities: only its own types are used (the worldgen deadlock fix), so the jar is not deobfuscated
+    compileOnly files('libs/lostcities-1.20-7.5.7.jar')
+}
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            minecraft_version   : minecraft_version,
+            forge_version       : forge_version,
+            mod_id              : mod_id,
+            mod_name            : mod_name,
+            mod_license         : mod_license,
+            mod_version         : mod_version,
+            mod_authors         : mod_authors,
+            mod_description     : mod_description
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes([
+                'Specification-Title'     : mod_id,
+                'Specification-Vendor'    : mod_authors,
+                'Specification-Version'   : '1',
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : project.jar.archiveVersion,
+                'Implementation-Vendor'   : mod_authors,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                'MixinConfigs'            : 'efw.mixins.json'
+        ])
+    }
+    finalizedBy 'reobfJar'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-Xmaxerrs' << '3000'
+}

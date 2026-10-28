@@ -1,0 +1,23 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:efw_bitten_food"
+    },
+    {
+      "type": "single",
+      "resource": "efw:particle/blood_square_0"
+    },
+    {
+      "type": "single",
+      "resource": "efw:particle/blood_square_1"
+    },
+    {
+      "type": "single",
+      "resource": "efw:particle/blood_square_2"
+    },
+    {
+      "type": "single",
+      "resource": "efw:particle/blood_square_3"
+    }
+  ]
+}

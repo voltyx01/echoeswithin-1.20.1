@@ -1,0 +1,41 @@
+{
+  "melee": [
+    {"text": "Удар после кувырка тратит меньше сил.", "effects": [{"stat": "stamina.attack_cost", "value": -0.25}]},
+    {"text": "Бить в одно место.", "effects": [{"stat": "melee.damage", "value": 0.06}]},
+    {"text": "Короткий замах. Левая рука свободна и при тяжёлом клинке.", "effects": [{"stat": "attack.speed", "value": 0.06}, {"stat": "hook.two_handed", "value": 1}]},
+    {"text": "Вес в удар, а не в руку.", "effects": [{"stat": "knockback.deal", "value": 0.3}]},
+    {"text": "Убийство вблизи разгоняет руки; клинок тупится медленнее. Цепь не отпускает: второй заход сквозь.", "effects": [
+      {"stat": "attack.speed", "value": 0.15, "after": "kill_melee", "for": 4},
+      {"stat": "wear.weapon", "value": -0.25},
+      {"stat": "hook.combo", "value": 1}
+    ]}
+  ],
+  "firearms": [
+    {"text": "Приклад в мякоть плеча, не на кость.", "effects": [{"stat": "gun.recoil", "value": -0.05}]},
+    {"text": "Дыхание на выстреле.", "effects": [{"stat": "gun.spread", "value": -0.06}]},
+    {"text": "Магазин меняется не глядя.", "effects": [{"stat": "gun.reload", "value": 0.08}]},
+    {"text": "Подвести мушку и не дёрнуть.", "effects": [{"stat": "gun.recoil", "value": -0.08}]},
+    {"text": "Голова, а не корпус.", "effects": [{"stat": "headshot.damage", "value": 0.10}]}
+  ],
+  "meds": [
+    {"text": "Бинт туже — кровь останавливается раньше.", "effects": [{"stat": "heal.power", "value": 0.06}]},
+    {"text": "Что и когда колоть.", "effects": [{"stat": "effect.stim", "value": 0.12}]},
+    {"text": "Курс антибиотика до конца.", "effects": [{"stat": "effect.antibiotic", "value": 0.25}]},
+    {"text": "Лечить, а не латать.", "effects": [{"stat": "heal.power", "value": 0.10}]},
+    {"text": "Улей можно сдержать, если знать, как он входит.", "effects": [{"stat": "coth.resist", "value": 0.10}]}
+  ],
+  "lockpick": [
+    {"text": "Не давить на штифт: отмычки служат дольше.", "effects": [{"stat": "lockpick.wear", "value": -0.10}]},
+    {"text": "Слушать замок.", "effects": [{"stat": "lockpick.wear", "value": -0.15}]},
+    {"text": "Где люди прячут ценное.", "effects": [{"stat": "loot.speed", "value": 0.10}]},
+    {"text": "Тонкая работа.", "effects": [{"stat": "lockpick.wear", "value": -0.15}]},
+    {"text": "Чужие тайники видно сразу.", "effects": [{"stat": "loot.bonus", "value": 0.05}, {"stat": "lockpick.wear", "value": -0.10}]}
+  ],
+  "tools": [
+    {"text": "Точить и смазывать.", "effects": [{"stat": "wear.tool", "value": -0.12}]},
+    {"text": "Инструмент под руку.", "effects": [{"stat": "wear.tool", "value": -0.12}]},
+    {"text": "Оружие тоже инструмент.", "effects": [{"stat": "wear.weapon", "value": -0.10}]},
+    {"text": "Длинная рука: дотянуться, не подходя.", "effects": [{"stat": "reach", "value": 0.5}]},
+    {"text": "Всё служит дольше.", "effects": [{"stat": "wear.tool", "value": -0.15}, {"stat": "wear.weapon", "value": -0.10}]}
+  ]
+}

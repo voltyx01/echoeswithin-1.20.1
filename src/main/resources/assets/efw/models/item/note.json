@@ -1,0 +1,62 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "efw:item/note1"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "efw:variant": 0.2
+      },
+      "model": "efw:item/note2"
+    },
+    {
+      "predicate": {
+        "efw:variant": 0.3
+      },
+      "model": "efw:item/note3"
+    },
+    {
+      "predicate": {
+        "efw:variant": 0.4
+      },
+      "model": "efw:item/note4"
+    },
+    {
+      "predicate": {
+        "efw:variant": 0.5
+      },
+      "model": "efw:item/note5"
+    },
+    {
+      "predicate": {
+        "efw:variant": 0.6
+      },
+      "model": "efw:item/note6"
+    },
+    {
+      "predicate": {
+        "efw:variant": 0.7
+      },
+      "model": "efw:item/note7"
+    },
+    {
+      "predicate": {
+        "efw:variant": 0.8
+      },
+      "model": "efw:item/note8"
+    },
+    {
+      "predicate": {
+        "efw:variant": 0.9
+      },
+      "model": "efw:item/note9"
+    },
+    {
+      "predicate": {
+        "efw:variant": 1.0
+      },
+      "model": "efw:item/note10"
+    }
+  ]
+}

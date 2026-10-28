@@ -1,0 +1,77 @@
+{
+  "focus": "Тишина, покой, отдых",
+  "price": "Бег даётся тяжелее",
+  "root": {
+    "name": "Тишина",
+    "text": "Его не видно, пока он не двигается. А двигаться он не любит.",
+    "effects": [
+      {"stat": "visibility", "value": -0.25, "when": ["crouch"]},
+      {"stat": "stamina.regen", "value": 0.30, "when": ["still:3"]},
+      {"stat": "stamina.sprint_cost", "value": 0.10}
+    ]
+  },
+  "branches": [
+    [
+      {"name": "Не торопиться", "text": "Постоял — отдышался.",
+        "effects": [{"stat": "stamina.regen", "value": 0.20, "when": ["still:3"]}]},
+      {"name": "Прилечь", "text": "После сна раны затягиваются быстрее.",
+        "effects": [{"stat": "heal.power", "value": 0.30, "after": "wake", "for": 600}]},
+      {"name": "Без лишних движений", "text": "Прыжок и кувырок — только по делу.",
+        "effects": [
+          {"stat": "stamina.jump_cost", "value": -0.30},
+          {"stat": "roll.cost", "value": -0.15}
+        ]},
+      {"name": "Сон без снов", "text": "Выспался — и мир на время тише.",
+        "effects": [
+          {"stat": "stamina.max", "value": 0.20, "after": "wake", "for": 1200},
+          {"stat": "pulse.rest", "value": -8, "after": "wake", "for": 1200}
+        ]}
+    ],
+    [
+      {"name": "Спокойствие", "text": "Сердце ленится тоже.",
+        "effects": [
+          {"stat": "pulse.rest", "value": -6},
+          {"stat": "pulse.decay", "value": 0.30}
+        ]},
+      {"name": "Бережная рука", "text": "Он не тратит лишнего — и инструменты тоже.",
+        "effects": [{"stat": "wear.tool", "value": -0.25}]},
+      {"name": "Пусть сами", "text": "Пригнулся — и про него забыли.",
+        "effects": [{"stat": "visibility", "value": -0.20, "when": ["crouch"]}]},
+      {"name": "Покой", "text": "Неподвижный, он лечится и не боится.",
+        "effects": [
+          {"stat": "heal.power", "value": 0.50, "when": ["still:5"]},
+          {"stat": "pulse.fear", "value": -0.30, "when": ["still:5"]}
+        ]}
+    ],
+    [
+      {"name": "Тихо лежу", "text": "Лёжа и в присяде ствол не прыгает.",
+        "effects": [{"stat": "gun.recoil", "value": -0.15, "when": ["crouch"]}]},
+      {"name": "Прилёг и выстрелил", "text": "Замер, прицелился — пуля идёт ровно.",
+        "effects": [{"stat": "gun.spread", "value": -0.20, "when": ["still:2", "aim"]}]},
+      {"name": "Не спеша", "text": "Стоя на месте, он перезаряжается спокойно и быстро.",
+        "effects": [{"stat": "gun.reload", "value": 0.10, "when": ["still:2"]}]},
+      {"name": "Спящий пёс", "text": "Десять секунд без движения — и первый удар вдвое.",
+        "effects": [
+          {"stat": "gun.damage", "value": 1.0, "when": ["still:10"], "cooldown": 15},
+          {"stat": "melee.damage", "value": 1.0, "when": ["still:10"], "cooldown": 15}
+        ]}
+    ]
+  ],
+  "cards": [
+    {"id": "s_no_rush", "name": "Не спеша", "text": "Бегать он не любит. Но может дольше.",
+      "buff": [{"stat": "stamina.sprint_cost", "value": -0.15}],
+      "cost": [{"stat": "move.speed", "value": -0.03}]},
+    {"id": "s_lazy_moves", "name": "Ленивые движения", "text": "Тихо — значит медленно.",
+      "buff": [{"stat": "visibility", "value": -0.15}],
+      "cost": [{"stat": "loot.speed", "value": -0.15}]},
+    {"id": "s_sleeper", "name": "Любитель поспать", "text": "Спал — и долго не может проснуться.",
+      "buff": [{"stat": "heal.power", "value": 0.30, "after": "wake", "for": 600}, {"stat": "stamina.max", "value": 0.10, "after": "wake", "for": 600}],
+      "cost": [{"stat": "move.speed", "value": -0.20, "after": "wake", "for": 20}]},
+    {"id": "s_economy", "name": "Экономия сил", "text": "Вне боя тело чинится само. В бою — устаёт.",
+      "buff": [{"stat": "heal.power", "value": 0.20, "when": ["nohurt:10"]}],
+      "cost": [{"stat": "stamina.regen", "value": -0.15, "after": "hurt", "for": 10}]},
+    {"id": "s_lie_low", "name": "Затаиться", "text": "В присяде точнее. В рост — заметнее.",
+      "buff": [{"stat": "gun.spread", "value": -0.15, "when": ["crouch"]}],
+      "cost": [{"stat": "visibility", "value": 0.05, "when": ["!crouch"]}]}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    { "item": "survival_instinct:cloth" },
+    { "item": "minecraft:gunpowder" },
+    { "item": "survival_instinct:tequila" }
+  ],
+  "result": {
+    "item": "efw:flaming_cloth",
+    "count": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "turns=0": {
+      "model": "efw:block/placed_item"
+    },
+    "turns=1": {
+      "model": "efw:block/placed_item"
+    },
+    "turns=2": {
+      "model": "efw:block/placed_item"
+    },
+    "turns=3": {
+      "model": "efw:block/placed_item"
+    }
+  }
+}

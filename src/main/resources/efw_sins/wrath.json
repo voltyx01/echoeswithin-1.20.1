@@ -1,0 +1,297 @@
+{
+  "focus": "Ближний бой, кровь как топливо",
+  "price": "Пульс остывает медленно",
+  "root": {
+    "name": "Кровь — топливо",
+    "text": "Чужая кровь на руках не пугает. Она греет.",
+    "effects": [
+      {
+        "stat": "blood.gain",
+        "value": 0.5
+      },
+      {
+        "stat": "doll.ready",
+        "value": -10
+      },
+      {
+        "stat": "pulse.decay",
+        "value": -0.25
+      }
+    ]
+  },
+  "branches": [
+    [
+      {
+        "name": "Рывок к горлу",
+        "text": "С холодным в руке кувырок короче и дешевле.",
+        "effects": [
+          {
+            "stat": "roll.cost",
+            "value": -0.2,
+            "when": [
+              "holding:melee"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Загнанный зверь",
+        "text": "Когда больно, ноги несут быстрее.",
+        "effects": [
+          {
+            "stat": "move.speed",
+            "value": 0.1,
+            "when": [
+              "hp<0.5"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Через боль",
+        "text": "Раненым он опаснее, а не слабее.",
+        "effects": [
+          {
+            "stat": "damage.taken",
+            "value": -0.15,
+            "when": [
+              "hp<0.5"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Неостановимый",
+        "text": "Удар по нему — как удар шпорой. Раз в десять минут смерть промахивается.",
+        "effects": [
+          {
+            "stat": "stamina.regen",
+            "value": 0.5,
+            "after": "hurt",
+            "for": 4
+          },
+          {
+            "stat": "roll.cooldown",
+            "value": -0.3
+          },
+          {
+            "stat": "cheat_death",
+            "value": 1,
+            "cooldown": 600
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "name": "Красные руки",
+        "text": "Кровь липнет к нему охотнее. Убитый вблизи оставляет её на нём.",
+        "effects": [
+          {
+            "stat": "blood.gain",
+            "value": 0.3
+          },
+          {
+            "stat": "blood.add",
+            "value": 0.04,
+            "after": "kill_melee"
+          }
+        ]
+      },
+      {
+        "name": "Вкус железа",
+        "text": "Убийство вблизи затягивает раны.",
+        "effects": [
+          {
+            "stat": "heal",
+            "value": 0.04,
+            "after": "kill_melee",
+            "cooldown": 3
+          }
+        ]
+      },
+      {
+        "name": "Не до страха",
+        "text": "С клинком в руке твари пугают меньше.",
+        "effects": [
+          {
+            "stat": "pulse.fear",
+            "value": -0.4,
+            "when": [
+              "holding:melee"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Причастие",
+        "text": "Срыв с куклой длится дольше, и каждое убийство держит его крепче.",
+        "effects": [
+          {
+            "stat": "doll.buff_time",
+            "value": 0.4
+          },
+          {
+            "stat": "doll.kill_extend",
+            "value": 0.5
+          },
+          {
+            "stat": "doll.melee",
+            "value": 0.15
+          }
+        ],
+        "veil": "Чужая кровь станет причастием. К чему — вы пока не знаете."
+      }
+    ],
+    [
+      {
+        "name": "Натиск",
+        "text": "Удар сразу после кувырка.",
+        "effects": [
+          {
+            "stat": "melee.damage",
+            "value": 0.2,
+            "after": "roll",
+            "for": 2
+          }
+        ]
+      },
+      {
+        "name": "Добить",
+        "text": "Тем, кто уже падает, не дают встать.",
+        "effects": [
+          {
+            "stat": "melee.damage",
+            "value": 0.4,
+            "when": [
+              "target_hp<0.25"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Кость ломается",
+        "text": "Когда он весь в крови, удары тяжелее и чаще.",
+        "effects": [
+          {
+            "stat": "knockback.deal",
+            "value": 0.5,
+            "when": [
+              "blood>0.5"
+            ]
+          },
+          {
+            "stat": "attack.speed",
+            "value": 0.1,
+            "when": [
+              "blood>0.5"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Око за око",
+        "text": "Ранили — следующий удар вернёт втрое.",
+        "effects": [
+          {
+            "stat": "melee.damage",
+            "value": 0.6,
+            "after": "hurt",
+            "for": 3,
+            "cooldown": 8
+          }
+        ]
+      }
+    ]
+  ],
+  "cards": [
+    {
+      "id": "w_red_veil",
+      "name": "Красная пелена",
+      "text": "Видно только того, кто рядом.",
+      "buff": [
+        {
+          "stat": "melee.damage",
+          "value": 0.12
+        }
+      ],
+      "cost": [
+        {
+          "stat": "gun.spread",
+          "value": 0.1
+        }
+      ]
+    },
+    {
+      "id": "w_fists",
+      "name": "Кулаки сами",
+      "text": "Руки быстрее мыслей.",
+      "buff": [
+        {
+          "stat": "attack.speed",
+          "value": 0.08
+        }
+      ],
+      "cost": [
+        {
+          "stat": "food.exhaustion",
+          "value": 0.06
+        }
+      ]
+    },
+    {
+      "id": "w_unstoppable",
+      "name": "Не остановиться",
+      "text": "Одно убийство тянет за собой второе.",
+      "buff": [
+        {
+          "stat": "move.speed",
+          "value": 0.1,
+          "after": "kill_melee",
+          "for": 6
+        }
+      ],
+      "cost": [
+        {
+          "stat": "pulse.decay",
+          "value": -0.15
+        }
+      ]
+    },
+    {
+      "id": "w_hot_blood",
+      "name": "Горячая кровь",
+      "text": "Кукла просыпается раньше. Ненадолго.",
+      "buff": [
+        {
+          "stat": "doll.ready",
+          "value": -10
+        }
+      ],
+      "cost": [
+        {
+          "stat": "doll.buff_time",
+          "value": -0.15
+        }
+      ],
+      "veil": "Что-то внутри просыпается раньше. Ненадолго."
+    },
+    {
+      "id": "w_heavy_hand",
+      "name": "Тяжёлая рука",
+      "text": "Бьёт так, что ломается и оружие.",
+      "buff": [
+        {
+          "stat": "knockback.deal",
+          "value": 0.5
+        }
+      ],
+      "cost": [
+        {
+          "stat": "wear.weapon",
+          "value": 0.15
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "focus": "Обыск, находки, бережливость",
+  "price": "Шумно роется",
+  "root": {
+    "name": "Нюх",
+    "text": "Он знает, где лежит. И роется, пока не найдёт.",
+    "effects": [
+      {"stat": "loot.speed", "value": 0.25},
+      {"stat": "loot.bonus", "value": 0.10},
+      {"stat": "visibility", "value": 0.30, "after": "search", "for": 5}
+    ]
+  },
+  "branches": [
+    [
+      {"name": "Своя ноша", "text": "Бегать с полными карманами привычно.",
+        "effects": [{"stat": "stamina.sprint_cost", "value": -0.10}]},
+      {"name": "Лёгкие ноги", "text": "Нашёл — и уходи быстро.",
+        "effects": [{"stat": "move.speed", "value": 0.12, "after": "search", "for": 6}]},
+      {"name": "Ночная смена", "text": "Ночью брать проще.",
+        "effects": [{"stat": "visibility", "value": -0.15, "when": ["night"]}]},
+      {"name": "Хозяин дороги", "text": "Дорога его. Ступенька, завал — не помеха.",
+        "effects": [
+          {"stat": "stamina.max", "value": 0.20},
+          {"stat": "step", "value": 0.5}
+        ]}
+    ],
+    [
+      {"name": "Запасливость", "text": "Еда идёт впрок.",
+        "effects": [{"stat": "food.restore", "value": 0.15}]},
+      {"name": "Аптечка при себе", "text": "Своё лекарство всегда лучше чужого.",
+        "effects": [{"stat": "heal.power", "value": 0.12}]},
+      {"name": "Азарт", "text": "Пока руки в чужом ящике, страха нет.",
+        "effects": [{"stat": "pulse.fear", "value": -0.40, "after": "search", "for": 10}]},
+      {"name": "Ничего не пропадёт", "text": "Каждая таблетка — до последней капли.",
+        "effects": [
+          {"stat": "effect.stim", "value": 0.30},
+          {"stat": "effect.antibiotic", "value": 0.30}
+        ]}
+    ],
+    [
+      {"name": "Последняя пуля", "text": "Когда патронов почти нет, руки быстрее.",
+        "effects": [{"stat": "gun.reload", "value": 0.15, "when": ["ammo<4"]}]},
+      {"name": "Бережливый", "text": "Оружие стоит денег.",
+        "effects": [{"stat": "wear.weapon", "value": -0.25}]},
+      {"name": "Холодный счёт", "text": "Убил из ствола — выдохнул.",
+        "effects": [{"stat": "stamina.restore", "value": 0.15, "after": "kill_gun", "cooldown": 4}]},
+      {"name": "Золотая жила", "text": "После убийства он обыскивает как одержимый.",
+        "effects": [
+          {"stat": "loot.bonus", "value": 0.15},
+          {"stat": "loot.speed", "value": 0.50, "after": "kill", "for": 10}
+        ]}
+    ]
+  ],
+  "cards": [
+    {"id": "g_grabby", "name": "Загребущие руки", "text": "Быстрее. Ещё быстрее.",
+      "buff": [{"stat": "loot.speed", "value": 0.15}],
+      "cost": [{"stat": "food.exhaustion", "value": 0.05}]},
+    {"id": "g_nose", "name": "Нюх на добро", "text": "Найти больше. Шуметь больше.",
+      "buff": [{"stat": "loot.bonus", "value": 0.08}],
+      "cost": [{"stat": "visibility", "value": 0.20, "after": "search", "for": 5}]},
+    {"id": "g_last_round", "name": "Последний патрон", "text": "Беречь до последнего — и бить им наверняка.",
+      "buff": [{"stat": "gun.damage", "value": 0.12, "when": ["ammo<4"]}],
+      "cost": [{"stat": "gun.reload", "value": -0.08}]},
+    {"id": "g_hoard", "name": "Про запас", "text": "Съесть всё, что есть.",
+      "buff": [{"stat": "food.restore", "value": 0.15}],
+      "cost": [{"stat": "food.exhaustion", "value": 0.08}]},
+    {"id": "g_careful", "name": "Беречь вещи", "text": "Вещи он бережёт лучше, чем себя.",
+      "buff": [{"stat": "wear.weapon", "value": -0.15}, {"stat": "wear.tool", "value": -0.15}],
+      "cost": [{"stat": "heal.power", "value": -0.08}]}
+  ]
+}

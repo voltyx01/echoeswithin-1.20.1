@@ -1,0 +1,27 @@
+{
+  "name": "item.efw.sedatives",
+  "tooltip": "item.efw.sedatives.desc",
+  "base_item": "lrtactical:consumable",
+  "data": {
+    "use_duration": 40,
+    "cooldown": 100,
+    "cooldown_category": "lrtactical:medical",
+    "stack_size": 1,
+    "max_durability": 10,
+    "durability_damage": 1,
+    "draw_time": 20,
+    "put_away_time": 14,
+    "use_mode": "toggle",
+    "effects": [
+      {
+        "id": "efw:sedated",
+        "duration": 4800,
+        "amplifier": 0,
+        "chance": 1.0,
+        "ambient": false,
+        "visible": false,
+        "show_icon": true
+      }
+    ]
+  }
+}

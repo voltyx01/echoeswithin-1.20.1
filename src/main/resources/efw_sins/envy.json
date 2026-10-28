@@ -1,0 +1,78 @@
+{
+  "focus": "Сильнее против тех, кто сильнее",
+  "price": "Слабые цели не интересны",
+  "root": {
+    "name": "Тот, кто сильнее",
+    "text": "Его тянет к тем, кто больше и живее. Слабых он не замечает.",
+    "effects": [
+      {"stat": "melee.damage", "value": 0.10, "when": ["target_stronger"]},
+      {"stat": "gun.damage", "value": 0.10, "when": ["target_stronger"]},
+      {"stat": "melee.damage", "value": -0.05, "when": ["!target_stronger"]},
+      {"stat": "gun.damage", "value": -0.05, "when": ["!target_stronger"]}
+    ]
+  },
+  "branches": [
+    [
+      {"name": "Следом", "text": "Рядом с кем-то дышится легче. Один — кувыркается чаще.",
+        "effects": [
+          {"stat": "stamina.regen", "value": 0.15, "when": ["ally:12"]},
+          {"stat": "roll.cost", "value": -0.10, "when": ["solo"]}
+        ]},
+      {"name": "Жадный до сил", "text": "Чужая смерть возвращает силы.",
+        "effects": [{"stat": "stamina.regen", "value": 0.30, "after": "kill", "for": 10}]},
+      {"name": "Не уступить", "text": "Раненым он не отстаёт.",
+        "effects": [{"stat": "move.speed", "value": 0.08, "when": ["hp<0.5"]}]},
+      {"name": "Вторая тень", "text": "Его движения копируют чужие — дальше и чаще.",
+        "effects": [
+          {"stat": "roll.distance", "value": 0.20},
+          {"stat": "roll.cooldown", "value": -0.25}
+        ]}
+    ],
+    [
+      {"name": "Чужие бинты", "text": "Подобранное лечит не хуже своего.",
+        "effects": [{"stat": "heal.power", "value": 0.10}]},
+      {"name": "Не один", "text": "Когда рядом кто-то, сердце тише.",
+        "effects": [{"stat": "pulse.rest", "value": -10, "when": ["ally:10"]}]},
+      {"name": "Чужая храбрость", "text": "Ранили — злость сильнее страха.",
+        "effects": [{"stat": "pulse.fear", "value": -0.30, "after": "hurt", "for": 6}]},
+      {"name": "Присвоить", "text": "Забрать себе то, что было в другом.",
+        "effects": [{"stat": "heal", "value": 0.05, "after": "kill", "cooldown": 4}]}
+    ],
+    [
+      {"name": "Ловить момент", "text": "Раненых добивают первыми.",
+        "effects": [
+          {"stat": "melee.damage", "value": 0.10, "when": ["target_hp<0.5"]},
+          {"stat": "gun.damage", "value": 0.10, "when": ["target_hp<0.5"]}
+        ]},
+      {"name": "Равняюсь на сильных", "text": "Сильным — в голову.",
+        "effects": [{"stat": "headshot.damage", "value": 0.15, "when": ["target_stronger"]}]},
+      {"name": "Подсмотрел", "text": "Хват он подсмотрел у кого-то лучше себя.",
+        "effects": [
+          {"stat": "gun.recoil", "value": -0.10},
+          {"stat": "gun.spread", "value": -0.05}
+        ]},
+      {"name": "Сорвать с пьедестала", "text": "Чем сильнее цель, тем страшнее удар.",
+        "effects": [
+          {"stat": "melee.damage", "value": 0.25, "when": ["target_stronger"]},
+          {"stat": "gun.damage", "value": 0.15, "when": ["target_stronger"]}
+        ]}
+    ]
+  ],
+  "cards": [
+    {"id": "e_reach_up", "name": "Тянуться выше", "text": "Сильным — больше. Слабым — меньше.",
+      "buff": [{"stat": "gun.damage", "value": 0.12, "when": ["target_stronger"]}],
+      "cost": [{"stat": "gun.damage", "value": -0.06, "when": ["!target_stronger"]}]},
+    {"id": "e_trophy", "name": "Трофей", "text": "Каждое убийство — немного жизни себе.",
+      "buff": [{"stat": "heal", "value": 0.03, "after": "kill", "cooldown": 3}],
+      "cost": [{"stat": "pulse.rest", "value": 4}]},
+    {"id": "e_follow", "name": "Тянусь следом", "text": "С кем-то он быстрее. Один — нет.",
+      "buff": [{"stat": "move.speed", "value": 0.08, "when": ["ally:12"]}, {"stat": "stamina.regen", "value": 0.10, "when": ["ally:12"]}],
+      "cost": [{"stat": "stamina.regen", "value": -0.05, "when": ["solo"]}]},
+    {"id": "e_borrow", "name": "Чужие таблетки", "text": "Стимуляторы действуют дольше. Лекарства — хуже.",
+      "buff": [{"stat": "effect.stim", "value": 0.20}],
+      "cost": [{"stat": "effect.antibiotic", "value": -0.15}]},
+    {"id": "e_not_behind", "name": "Не отстать", "text": "Сердце бьётся, чтобы успеть.",
+      "buff": [{"stat": "stamina.max", "value": 0.10}],
+      "cost": [{"stat": "pulse.rest", "value": 6}]}
+  ]
+}
